@@ -10,7 +10,6 @@
 	<link href="/css/bootstrap.css" rel="stylesheet" />
 	<link href="/css/styles.css" rel="stylesheet" />
 	<link href="/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-	
 </head>
 <body>
 	<c:if test="${!empty mensagem}">
@@ -24,7 +23,7 @@
 			<div class="loginmodal-container">
 				<h1>Nova Despesa</h1>
 				<br />
-				<spring:form class="form-horizontal"  method="POST" action="/despesas" commandName="despesa">
+				<spring:form class="form-horizontal" method="POST" action="/despesas" commandName="despesa">
 					<div class="form-group">
 						<label for="descricao" class="control-label">Descricao:</label>
 						<div class="col-sm-12">
