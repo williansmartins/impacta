@@ -20,7 +20,7 @@ public class DespesaRESTController {
 	Despesas despesasDAO;
 	
 	//criar (POST)
-	@RequestMapping(name="/criar", method=RequestMethod.POST) 
+	@RequestMapping(value="/criar", method=RequestMethod.POST) 
 	@ResponseBody
 	public JsonResponse criar(@RequestBody Despesa despesa){
 		JsonResponse resposta = new JsonResponse();
