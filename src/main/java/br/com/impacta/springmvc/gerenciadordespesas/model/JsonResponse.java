@@ -3,6 +3,7 @@ package br.com.impacta.springmvc.gerenciadordespesas.model;
 public class JsonResponse {
 	private Status status;
 	private String mensagem;
+	private Object objeto;
 
 	public JsonResponse() {
 
@@ -25,6 +26,14 @@ public class JsonResponse {
 	}
 	public void setMensagem(String mensagem) {
 		this.mensagem = mensagem;
+	}
+
+	public Object getObjeto() {
+		return objeto;
+	}
+
+	public void setObjeto(Object objeto) {
+		this.objeto = objeto;
 	}
 	
 }
