@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.impacta.springmvc.gerenciadordespesas.model.CategoriaDespesa;
@@ -43,6 +45,22 @@ public class DespesaController {
 		view.addObject("despesas", despesas.findAll());
 		return view;    
 	}
+	
+	@RequestMapping("/todasDespesas")  
+	@ResponseBody
+	public List<Despesa> todasDespesas(){
+		return despesas.findAll(); 
+	}
+	
+	
+	@RequestMapping(value = "/buscarDespesas", method = RequestMethod.POST)  
+	@ResponseBody
+	public List<Despesa> buscarDespesas(@RequestBody Despesa despesa){
+		List<Despesa> lista = despesas.findByDescricaoContaining(despesa.getDescricao());
+		return lista; 
+	}
+	
+	
 
 	@RequestMapping(method=RequestMethod.POST)  
 	public ModelAndView salvar(@Valid @ModelAttribute("despesa") Despesa despesa, Errors errors){
