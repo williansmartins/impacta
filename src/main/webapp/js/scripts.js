@@ -1,4 +1,7 @@
+$(document).ready(buscarDespesas());
+
 function buscarDespesas() {
+	
     $.ajax({
         url:'/despesas/todasDespesas',
         complete: function (response) {
