@@ -16,7 +16,7 @@ function buscarDespesas() {
 function addItensNaTabela(despesas){
 	for(var i = 0; i<despesas.length; i++){
 		var despesa = despesas[i];
-		$('#tabela').append("<tr><td>"+despesa.codigo+"</td><td>"+despesa.descricao+"</td></tr>");
+		$('#tabela').append("<tr><td>"+despesa.codigo+"</td><td>"+despesa.categoria+"</td><td>"+despesa.valor+"</td></tr>");
 	}
 }
 
