@@ -59,13 +59,7 @@ public class DespesaRESTController {
 		return resposta;
 	}
 	
-	
-	
 	//atualizar (PUT)
-	//buscar (GET)
-	
-	//atualizar (PUT)
-	
 	@RequestMapping(value="/atualizar", method=RequestMethod.POST) 
 	@ResponseBody
 	public JsonResponse atualizar(@RequestBody Despesa despesa){
@@ -84,6 +78,7 @@ public class DespesaRESTController {
 		return resposta ;
 	}
 	
+	//buscar (GET)
 	@RequestMapping(value="/buscarTodos", method=RequestMethod.GET)  
 	@ResponseBody
 	public JsonResponse buscarTodos(){
