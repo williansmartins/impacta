@@ -40,4 +40,25 @@ public class DespesaRESTController {
 	//deletar (DELETE)
 	//atualizar (PUT)
 	//buscar (GET)
+	
+	//atualizar (PUT)
+	
+	@RequestMapping(value="/atualizar", method=RequestMethod.POST) 
+	@ResponseBody
+	public JsonResponse atualizar(@RequestBody Despesa despesa){
+		JsonResponse resposta = new JsonResponse();
+		
+		try {
+		
+			despesasDAO.save(despesa);
+			resposta.setStatus(Status.SUCESSO);
+			resposta.setMensagem("Sucesso ao atualizar!");
+			
+		} catch (Exception e) {
+			resposta.setStatus(Status.ERRO);
+			resposta.setMensagem("Ocorreu um erro ao atualizar: " + e.getMessage());
+		}
+		return resposta ;
+	}
+	
 }

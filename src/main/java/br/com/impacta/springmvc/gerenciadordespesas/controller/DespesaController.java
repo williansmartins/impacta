@@ -22,11 +22,16 @@ import br.com.impacta.springmvc.gerenciadordespesas.model.CategoriaDespesa;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Despesa;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.Despesas;
 
-@Controller
-@RequestMapping("/despesas")
+
+//Aqui na controller os dois exemplos um ingessada e outra com servicos rest
+//Versão ingessada com jstl, versão com serviços rest com os methodos delete,put,post
+//Aplicação volatil , funciona pra todas as plataformas, funcionara para outras plataformas como celualr, tabletes através do
+//serviço rest., atraves dos metodos get,put,delete
+@Controller//como fosse uma servlet, recebe a requisição
+@RequestMapping("/despesas")//mapeamento da request
 public class DespesaController {
 	
-	@Autowired
+	@Autowired//injeção de dependencia, não precisa instanciar classe
 	Despesas despesas;
 	
 	@RequestMapping(method=RequestMethod.GET)  
@@ -42,19 +47,20 @@ public class DespesaController {
 	public ModelAndView despesaNova(){
 		ModelAndView view = new ModelAndView("CadastroDespesas");
 		view.addObject(new Despesa());
-		view.addObject("despesas", despesas.findAll());
+		view.addObject("despesas", despesas.findAll());//retorna o objeto despesas para view pagina jsp.
 		return view;    
 	}
 	
-	@RequestMapping("/todasDespesas")  
+	@RequestMapping("/todasDespesas")//contrato, outros dispositivos vao achar essa url 
 	@ResponseBody
 	public List<Despesa> todasDespesas(){
 		return despesas.findAll(); 
 	}
 	
-	
+
+	//retorna todos os registros no formato JSON, para View, para pagina.jsp
 	@RequestMapping(value = "/buscarDespesas", method = RequestMethod.POST)  
-	@ResponseBody
+	@ResponseBody//converte para JSON
 	public List<Despesa> buscarDespesas(@RequestBody Despesa despesa){
 		List<Despesa> lista = despesas.findByDescricaoContaining(despesa.getDescricao());
 		return lista; 
@@ -64,7 +70,7 @@ public class DespesaController {
 
 	@RequestMapping(method=RequestMethod.POST)  
 	public ModelAndView salvar(@Valid @ModelAttribute("despesa") Despesa despesa, Errors errors){
-		ModelAndView view = new ModelAndView("CadastroDespesas");
+		ModelAndView view = new ModelAndView("CadastroDespesas");//pagina.jsp
 		
 		if(errors.hasErrors()){
 			return view;
