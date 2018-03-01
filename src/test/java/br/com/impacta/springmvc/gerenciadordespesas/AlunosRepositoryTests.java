@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.impacta.springmvc.gerenciadordespesas.model.Alunos;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.AlunosDAO;
+import junit.framework.Assert;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,18 +22,24 @@ public class AlunosRepositoryTests {
 	@Test
 	public void buscarTodos() {
 		
-		List<Alunos> findAll = dao.findAll();
-		System.out.println(findAll);
+		List<Alunos> lista = dao.findAll();
+		System.out.println(lista);
+//		Assert.assertEquals(???, ???);
 	}
 
 	@Test
 	public void criar() {
-		
 		Alunos aluno = new Alunos();
 		aluno.setNome("manuel");
 		aluno.setCpf("386.513.458-01");
 		aluno.setDatanasc(new Date());
+
+		Assert.assertNull(aluno.getCod());
 		dao.save(aluno );
-		
+		Integer cod = aluno.getCod();
+		Assert.assertNotNull(cod);
+		dao.delete(aluno);
+		Alunos findOne = dao.findOne(cod);
+		Assert.assertNull(findOne);
 	}
 }
