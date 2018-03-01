@@ -3,6 +3,7 @@ package br.com.impacta.springmvc.gerenciadordespesas;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,10 @@ public class AlunosRepositoryTests {
 		aluno.setNome("manuel");
 		aluno.setCpf("386.513.458-01");
 		aluno.setDatanasc(new Date());
+		Assert.assertNull(aluno.getCod());
 		dao.save(aluno );
+		Assert.assertNotNull(aluno.getCod());
+		dao.delete(aluno);
 		
 	}
 }
