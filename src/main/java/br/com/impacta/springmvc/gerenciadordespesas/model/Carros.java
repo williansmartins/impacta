@@ -1,4 +1,6 @@
 package br.com.impacta.springmvc.gerenciadordespesas.model;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -85,6 +87,11 @@ public class Carros {
 	public String toString() {
 		return "Alunos [codigo=" + codigo + ", nome=" + nome + ", datanasc=" + ano + ", Valor=" + valor
 				+ ", Cor=" + cor + "]";
+	}
+
+	public List<Carros> findByDescricaoContaining(String descricao) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 			
