@@ -10,7 +10,7 @@ public class Carros {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long codigo;
+	private int codigo;
 	
 	private String nome;
 	private int ano;
@@ -21,7 +21,7 @@ public class Carros {
 		super();
 	}
 	
-	public Carros(long codigo,String nome,int ano,double valor,String cor){
+	public Carros(int codigo,String nome,int ano,double valor,String cor){
 		setCodigo(codigo);
 		setNome(nome);
 		setAno(ano);
@@ -29,11 +29,11 @@ public class Carros {
 		setCor(cor);
 	}
 	
-	public long getCodigo(){
+	public int getCodigo(){
 		return codigo;
 	}
 	
-	public void setCodigo(long codigo){
+	public void setCodigo(int codigo){
 		this.codigo = codigo;
 	}
 	
