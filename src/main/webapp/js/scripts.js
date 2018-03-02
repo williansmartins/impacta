@@ -23,10 +23,12 @@ function addItensNaTabela(despesas){
 function addItensNaTela(despesas){
 	for(var i = 0; i<despesas.length; i++){
 		var despesa = despesas[i];
-		var aaa = `
+		var html = `
 			<div class='col-lg-4 mb-4'>
 			   <div class='card h-100'>
-			      <h4 class='card-header'>`+despesa.descricao+ `<span class='categoria'>` + despesa.categoria.toLowerCase() + `</span></h4>
+			      <h4 class='card-header'>`+despesa.descricao+ `
+			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
+			      </h4>
 			      <div class='card-body'>
 			         <p class='card-text'>`+despesa.observacoes+`</p>
 			      </div>
@@ -35,8 +37,7 @@ function addItensNaTela(despesas){
 			</div>
 		`;
 		
-//		$('#cards').append("<div class='col-lg-4 mb-4'> <div class='card h-100'> <h4 class='card-header'>"+despesa.descricao+ " <span class='categoria'>" + despesa.categoria.toLowerCase() + "</span>"  +"</h4> <div class='card-body'> <p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p> </div> <div class='card-footer'> <a href='#' class='btn btn-primary'>Learn More</a> </div> </div> </div>");
-		$('#cards').append(aaa);
+		$('#cards').append(html);
 		
 	}
 }
