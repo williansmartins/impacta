@@ -30,7 +30,12 @@ a.btn.btn-primary {
 	background-position-y: -8px;
 }
 
-.categoria.nova-categoria{
-	background-position-x: -157px;
-	background-position-y: -8px;
+.categoria.transporte{
+	background-position-x: -61px;
+	background-position-y: -59px;
 }
+.categoria.vestuario{
+	background-position-x: -0px;
+	background-position-y: -173px;
+}
+ a.data{font-size: 13px;}

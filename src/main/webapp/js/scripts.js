@@ -60,7 +60,7 @@ function addItensNaTela(despesas){
 		var html = `
 			<div class='col-lg-4 mb-4'>
 			   <div class='card h-100'>
-			      <h4 class='card-header'>`+despesa.descricao+ `
+			      <h4 class='card-header'>`+despesa.descricao+ ` <a class="data">( `+despesa.data+ ` )</a>
 			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
 			      </h4>
 			      <div class='card-body'>

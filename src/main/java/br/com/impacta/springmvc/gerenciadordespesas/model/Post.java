@@ -71,12 +71,12 @@ public class Post {
 	}
 
 
-	public Date getdata() {
+	public Date getData() {
 		return data;
 	}
 
 
-	public void setdata(Date data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -85,5 +85,14 @@ public class Post {
 		super();
 	}
 
+
+	@Override
+	public String toString() {
+		return "Post [cod=" + cod + ", imagem=" + imagem + ", titulo=" + titulo + ", descricao=" + descricao + ", data="
+				+ data + "]";
+	}
+
+	
+	
 	
 }
