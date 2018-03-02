@@ -55,4 +55,21 @@ public class CarrosRepositoryTests {
 		
 		
 	}
+	
+	@Test
+	public void excluir(){
+		
+		Carros carroLocal1 = new Carros();
+		carroLocal1.setNome("Ferrari");
+		carroLocal1.setAno(2014);
+		carroLocal1.setValor(3.000);
+		carroLocal1.setCor("Vermelho");
+		dao.save(carroLocal1);
+		Carros carroBanco1 = dao.findOne(carroLocal1.getCodigo());
+		Assert.assertNotNull(carroBanco1);
+		dao.delete(carroBanco1);
+		Carros carroBanco2 = dao.findOne(carroLocal1.getCodigo());
+		Assert.assertNull(carroBanco2);
+		
+	}
 }
