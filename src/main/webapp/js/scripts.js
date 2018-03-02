@@ -8,6 +8,16 @@ $(document).ready(function(){
 	});
 });
 
+function GetNow(){
+    var currentdate = new Date(); 
+    var datetime = currentdate.getDate() + "-"
+            + (currentdate.getMonth()+1)  + "-" 
+            + currentdate.getFullYear() + " "  
+            + currentdate.getHours() + ":"  
+            + currentdate.getMinutes() + ":" 
+            + currentdate.getSeconds();
+    return datetime;
+}
 
 function buscarDespesas() {
 	$.ajax({
@@ -54,7 +64,7 @@ function addItensNaTela(despesas){
 			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
 			      </h4>
 			      <div class='card-body'>
-			         <p class='card-text'>`+despesa.observacoes+`</p>
+			         <p class='card-text'>`+despesa.observacoes + "--" + GetNow() + `</p>
 			      </div>
 			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$ ` +despesa.valor+ `</a></div>
 			   </div>
