@@ -27,3 +27,10 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+
+.categoria{
+	text-transform: capitalize;
+    display: block;
+    background-color: #d4d4d4;
+}
