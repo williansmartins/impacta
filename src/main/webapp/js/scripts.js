@@ -1,4 +1,5 @@
 $(document).ready(buscarDespesas());
+$(document).ready(buscarProfessores());
 
 function buscarDespesas() {
 	$.ajax({
@@ -6,6 +7,21 @@ function buscarDespesas() {
 		complete: function (response) {
 			var despesas = response.responseJSON;
 			addItensNaTela(despesas);
+		},
+		error: function () {
+			$('#output').html('Ixi: there was an error!');
+		},
+	});
+}
+
+
+
+function buscarProfessores() {
+	$.ajax({
+		url:'/professor/buscarTodos',
+		complete: function (response) {
+			var professores = response.responseJSON;
+			addProfessoresNaTela(professores);
 		},
 		error: function () {
 			$('#output').html('Ixi: there was an error!');
@@ -27,6 +43,13 @@ function addItensNaTela(despesas){
 	}
 }
 
+
+function addProfessoresNaTela(professores){
+	for(var i = 0; i<professores.objeto.length; i++){
+		var pro = professores.objeto[i];
+		$('#prof').append("<div class='col-lg-4 col-sm-6 portfolio-item'> <div class='card h-100'><a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a> <div class='card-body'><h4 class='card-title'><a href='#'>"+pro.nome+"</a></h4>  <p class='card-text'>"+pro.cargo+"</p></div></div> </div>");
+	}
+}
 
 
 
