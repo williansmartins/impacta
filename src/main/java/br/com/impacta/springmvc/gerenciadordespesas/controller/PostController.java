@@ -65,7 +65,7 @@ public class PostController {
 	
 	
 	//atualizar (PUT)
-	@RequestMapping(value="/atualizar", method=RequestMethod.POST) 
+	@RequestMapping(value="/atualizar", method=RequestMethod.PUT) 
 	@ResponseBody
 	public JsonResponse atualizar(@RequestBody Post post){
 		JsonResponse resposta = new JsonResponse();
