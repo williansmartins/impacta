@@ -48,7 +48,7 @@ function addItensNaTela(despesas){
 			      <div class='card-body'>
 			         <p class='card-text'>`+despesa.observacoes+`</p>
 			      </div>
-			      <div class='card-footer'> <a href='#' class='btn btn-primary'>Valor R$ </a>` +despesa.valor+ `</a> </div>
+			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$ ` +despesa.valor+ `</a></div>
 			   </div>
 			</div>
 		`;
