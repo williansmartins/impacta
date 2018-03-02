@@ -1,5 +1,13 @@
-$(document).ready(buscarDespesas());
-$(document).ready(buscarProfessores());
+$(document).ready(function(){
+
+	buscarDespesas();
+	buscarProfessores();
+
+	$( "#buscar" ).click(function() {
+	  	alert(123);
+	});
+});
+
 
 function buscarDespesas() {
 	$.ajax({
