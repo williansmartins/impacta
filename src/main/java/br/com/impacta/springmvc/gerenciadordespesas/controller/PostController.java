@@ -45,6 +45,7 @@ public class PostController {
 	
 	//deletar (DELETE)
 	@RequestMapping(value="/deletar/{codigo}",method=RequestMethod.DELETE)
+	@ResponseBody
 	public JsonResponse deletar(@PathVariable Integer codigo){
 		JsonResponse resposta = new JsonResponse();
 		
