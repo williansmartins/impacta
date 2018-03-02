@@ -22,12 +22,4 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
 
-.portfolio-item {
-  margin-bottom: 30px;
-}
-
-a.btn.btn-primary {
-    margin-right: 11px;
-} 

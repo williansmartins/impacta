@@ -1,16 +1,17 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 
+
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-	<meta charset="UTF-8" />
+	<meta charset="utf-8" />
 	<title>Insert title here</title>
 	<link href="/css/bootstrap.css" rel="stylesheet" />
 	<link href="/css/styles.css" rel="stylesheet" />
 	<link href="/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-	
 </head>
 <body>
 	<c:if test="${!empty mensagem}">
@@ -24,9 +25,9 @@
 			<div class="loginmodal-container">
 				<h1>Nova Despesa</h1>
 				<br />
-				<spring:form class="form-horizontal"  method="POST" action="/despesas" commandName="despesa">
+				<spring:form class="form-horizontal" method="POST" action="/despesas" commandName="despesa">
 					<div class="form-group">
-						<label for="descricao" class="control-label">Descricao:</label>
+						<label for="descricao" class="control-label">Descrição:</label>
 						<div class="col-sm-12">
 							<spring:input type="text" name="descricao" placeholder="descricao"  class="form-control" path="descricao"/>
 							<spring:errors path="descricao" cssClass="error" /> 
@@ -60,7 +61,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="observacoes" class="control-label">Observacoes:</label>
+						<label for="observacoes" class="control-label">Observações:</label>
 						<div class="col-sm-12">
 							<input type="text" name="observacoes" placeholder="observacoes" class="form-control"/> 
 						</div>

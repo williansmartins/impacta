@@ -1,4 +1,5 @@
 $(document).ready(buscarDespesas());
+$(document).ready(buscarProfessores());
 
 function buscarDespesas() {
 	$.ajax({
@@ -6,6 +7,21 @@ function buscarDespesas() {
 		complete: function (response) {
 			var despesas = response.responseJSON;
 			addItensNaTela(despesas);
+		},
+		error: function () {
+			$('#output').html('Ixi: there was an error!');
+		},
+	});
+}
+
+
+
+function buscarProfessores() {
+	$.ajax({
+		url:'/professor/buscarTodos',
+		complete: function (response) {
+			var professores = response.responseJSON;
+			addProfessoresNaTela(professores);
 		},
 		error: function () {
 			$('#output').html('Ixi: there was an error!');
@@ -23,10 +39,32 @@ function addItensNaTabela(despesas){
 function addItensNaTela(despesas){
 	for(var i = 0; i<despesas.length; i++){
 		var despesa = despesas[i];
-		$('#cards').append("<div class='col-lg-4 mb-4'> <div class='card h-100'> <h4 class='card-header'>"+despesa.descricao+"</h4> <div class='card-body'> <p class='card-text'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p> </div> <div class='card-footer'> <a href='#' class='btn btn-primary'>Valor R$ </a>" +despesa.valor+ " </div> </div> </div>");
+		var html = `
+			<div class='col-lg-4 mb-4'>
+			   <div class='card h-100'>
+			      <h4 class='card-header'>`+despesa.descricao+ `
+			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
+			      </h4>
+			      <div class='card-body'>
+			         <p class='card-text'>`+despesa.observacoes+`</p>
+			      </div>
+			      <div class='card-footer'> <a href='#' class='btn btn-primary'>Valor R$ </a>` +despesa.valor+ `</a> </div>
+			   </div>
+			</div>
+		`;
+		
+		$('#cards').append(html);
+		
 	}
 }
 
+
+function addProfessoresNaTela(professores){
+	for(var i = 0; i<professores.objeto.length; i++){
+		var pro = professores.objeto[i];
+		$('#prof').append("<div class='col-lg-4 col-sm-6 portfolio-item'> <div class='card h-100'><a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a> <div class='card-body'><h4 class='card-title'><a href='#'>"+pro.nome+"</a></h4>  <p class='card-text'>"+pro.cargo+"</p></div></div> </div>");
+	}
+}
 
 
 

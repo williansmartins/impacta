@@ -1,0 +1,36 @@
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+a.btn.btn-primary {
+    margin-right: 11px;
+}
+
+.categoria{
+	background-image: url(../image/sprite-categoria.png);
+    width: 46px;
+    height: 46px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    background-size: 250px;
+}
+
+.categoria.alimentacao{
+	background-position-x: 0px;
+	background-position-y: -8px;
+}
+
+.categoria.saude{
+	background-position-x: -187px;
+	background-position-y: -8px;
+}
+
+.categoria.nova-categoria{
+	background-position-x: -157px;
+	background-position-y: -8px;
+}
