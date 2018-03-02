@@ -1,4 +1,13 @@
-$(document).ready(buscarDespesas());
+$(document).ready(function(){
+
+	buscarDespesas();
+	buscarProfessores();
+
+	$( "#buscar" ).click(function() {
+	  	alert(123);
+	});
+});
+
 
 function buscarDespesas() {
 	$.ajax({
@@ -6,6 +15,21 @@ function buscarDespesas() {
 		complete: function (response) {
 			var despesas = response.responseJSON;
 			addItensNaTela(despesas);
+		},
+		error: function () {
+			$('#output').html('Ixi: there was an error!');
+		},
+	});
+}
+
+
+
+function buscarProfessores() {
+	$.ajax({
+		url:'/professor/buscarTodos',
+		complete: function (response) {
+			var professores = response.responseJSON;
+			addProfessoresNaTela(professores);
 		},
 		error: function () {
 			$('#output').html('Ixi: there was an error!');
@@ -32,7 +56,7 @@ function addItensNaTela(despesas){
 			      <div class='card-body'>
 			         <p class='card-text'>`+despesa.observacoes+` </p>
 			      </div>
-			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$`+despesa.valor+ `</a> </div> 
+			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$ ` +despesa.valor+ `</a></div>
 			   </div>
 			</div>
 		`;
@@ -42,6 +66,13 @@ function addItensNaTela(despesas){
 	}
 }
 
+
+function addProfessoresNaTela(professores){
+	for(var i = 0; i<professores.objeto.length; i++){
+		var pro = professores.objeto[i];
+		$('#prof').append("<div class='col-lg-4 col-sm-6 portfolio-item'> <div class='card h-100'><a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a> <div class='card-body'><h4 class='card-title'><a href='#'>"+pro.nome+"</a></h4>  <p class='card-text'>"+pro.cargo+"</p></div></div> </div>");
+	}
+}
 
 
 
