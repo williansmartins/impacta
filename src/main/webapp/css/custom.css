@@ -22,7 +22,12 @@
 	background-position-y: -8px;
 }
 
-.categoria.nova-categoria{
-	background-position-x: -157px;
+.categoria.transporte{
+	background-position-x: -560px;
 	background-position-y: -8px;
+}
+
+.categoria.vestuario{
+	background-position-x: 375px;
+	background-position-y: -60px;
 }

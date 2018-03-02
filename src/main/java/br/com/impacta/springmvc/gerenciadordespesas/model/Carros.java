@@ -1,9 +1,12 @@
 package br.com.impacta.springmvc.gerenciadordespesas.model;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -13,9 +16,11 @@ public class Carros {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo;
 	
+	@Size(min=2, max=240)
 	@NotNull
 	private String nome;
 	
+	@Size(min=4, max=4)
 	@NotNull
 	private int ano;
 	
@@ -83,4 +88,13 @@ public class Carros {
 		return "Alunos [codigo=" + codigo + ", nome=" + nome + ", datanasc=" + ano + ", Valor=" + valor
 				+ ", Cor=" + cor + "]";
 	}
-}
+
+	public List<Carros> findByDescricaoContaining(String descricao) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+			
+	}
+
+
