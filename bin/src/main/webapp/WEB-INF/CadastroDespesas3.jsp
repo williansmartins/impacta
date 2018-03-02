@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <head>
-<meta charset="iso-8859-1" />
+<meta charset="utf-8" />
 <title>::Cadastro de despesas::</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -32,7 +32,7 @@
 
 		<div class="form-group">
 			<span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-			<label for="descricao" class="col-sm-2 control-label">Descricao</label>
+			<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 			<div class="col-sm-4">
 				<spring:input type="text" class="form-control" id="descricao" name="descricao" path="descricao"/>
 				<spring:errors path="descricao" cssClass="error"/>
@@ -73,7 +73,7 @@
 
 		<div class="form-group">
 			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
-			<label for="observacoes" class="col-sm-2 control-label">ObservaÃ§Ãµes</label>
+			<label for="observacoes" class="col-sm-2 control-label">Observações</label>
 			<div class="col-sm-2">
 				<input type="text" class="form-control" id="observacoes" name="observacoes"/>
 			</div>
