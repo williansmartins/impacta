@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.impacta.springmvc.gerenciadordespesas.model.Alunos;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Animais;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.AnimaisDAO;
 import org.junit.Assert;
