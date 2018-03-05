@@ -1,6 +1,17 @@
 $(document).ready(function(){
 	buscarPosts();
+
+
 });
+
+function clicks() {
+	$(".deletaPost").click(
+		function(){
+			var id = $(this).data("id");
+			deletaPost(id);
+		}
+	);
+}
 
 function formatar(data){
     var currentdate = new Date(data); 
@@ -20,6 +31,7 @@ function buscarPosts() {
 		complete: function (response) {
 			var lista = response.responseJSON.objeto;
 			addItensNaTela(lista);
+			clicks();
 		},
 		error: function () {
 			alert('Ixi: there was an error!');
@@ -43,7 +55,8 @@ function addItensNaTela(lista){
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
 	              <p class="card-text">` + entidade.data + `</p>
-	              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+	              <a class="deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`">Apagar post</a>
+	             
 	            </div>
 	          </div>
 	        </div>
@@ -57,4 +70,20 @@ function addItensNaTela(lista){
 		$('#post-wrapper').append(html);
 		
 	}
+
+}
+
+function deletaPost(id) {
+	$.ajax({
+		url:'/post/rest/deletar/' + id,
+		type: 'DELETE',
+		complete: function (response) {
+			console.log(response.responseJSON.mensagem);
+			location.reload();
+		},
+		error: function () {
+			alert('Não foi possivel deletar o post!!');
+		},
+	 
+	});
 }
