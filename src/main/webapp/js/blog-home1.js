@@ -31,27 +31,19 @@ function addItensNaTela(lista){
 	for(var i = 0; i<lista.length; i++){
 		var entidade = lista[i];
 		var html = `
-	      <div class="card mb-4">
-	        <div class="card-body">
-	          <div class="row">
-	            <div class="card mb-4">
-	              <a href="#">
-	                <img class="img-fluid rounded" src="` + entidade.imagem + `" alt="">
-	              </a>
-	            </div>
-	            <div class="card mb-4">
-	              <h2 class="card-title">` + entidade.titulo + `</h2>
-	              <p class="card-text">` + entidade.descricao + `</p>
-	              <p class="card-text">` + entidade.data + `</p>
-	              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="card-footer text-muted">
-	         `+formatar(entidade.data) +` by
-	          <a href="#">Start Bootstrap</a>
-	        </div>
-	      </div>
+	     <div class="card mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">` + entidade.titulo + `</h2>
+              
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+              <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on January 1, 2017 by
+              <a href="#">Start Bootstrap</a>
+            </div>
+          </div>
 		`;
 		
 		$('#post-wrapper').append(html);
