@@ -31,11 +31,12 @@ a.btn.btn-primary {
 }
 
 .categoria.transporte{
-	background-position-x: -560px;
-	background-position-y: -8px;
+	background-position-x: -61px;
+	background-position-y: -59px;
 }
-
 .categoria.vestuario{
-	background-position-x: 375px;
-	background-position-y: -60px;
+	background-position-x: -0px;
+	background-position-y: -173px;
 }
+ a.data{font-size: 16px; background-color:#ccc;  }
+ a.data_atual{font-size: 13px; }

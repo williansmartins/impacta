@@ -1,5 +1,21 @@
-$(document).ready(buscarDespesas());
-$(document).ready(buscarProfessores());
+$(document).ready(function(){
+
+	buscarDespesas();
+	buscarProfessores();
+
+	$( "#buscar" ).click(function() {
+	  	alert(123);
+	});
+});
+
+function formatar(data){
+    var currentdate = new Date(data); 
+    var datetime = currentdate.getDate() + "/"
+            + (currentdate.getMonth()+1)  + "/" 
+            + currentdate.getFullYear();  
+           
+    return datetime;
+}
 
 function buscarDespesas() {
 	$.ajax({
@@ -42,13 +58,13 @@ function addItensNaTela(despesas){
 		var html = `
 			<div class='col-lg-4 mb-4'>
 			   <div class='card h-100'>
-			      <h4 class='card-header'>`+despesa.descricao+ `
+			      <h4 class='card-header'>`+despesa.descricao+ ` <a class="data">(`+formatar(despesa.data)+` <a class="data_atual"></a>)</a>   
 			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
 			      </h4>
 			      <div class='card-body'>
-			         <p class='card-text'>`+despesa.observacoes+`</p>
+			         <p class='card-text'>`+despesa.observacoes + `</p>
 			      </div>
-			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$ ` +despesa.valor+ `</a></div>
+			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$` +despesa.valor+ `</a></div>
 			   </div>
 			</div>
 		`;

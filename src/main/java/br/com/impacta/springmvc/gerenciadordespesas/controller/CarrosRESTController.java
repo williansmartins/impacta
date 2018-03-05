@@ -25,7 +25,7 @@ public class CarrosRESTController {
 		JsonResponse resposta = new JsonResponse();
 		
 		try {
-			CarrosDAO.save(carros);
+			 // CarrosDAO.save(carros);
 			resposta.setStatus(Status.SUCESSO);
 			resposta.setMensagem("Sucesso ao salvar!");
 			
