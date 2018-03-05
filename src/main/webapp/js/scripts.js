@@ -9,14 +9,12 @@ $(document).ready(function(){
 	});
 });
 
-function GetNow(){
-    var currentdate = new Date(); 
-    var datetime = currentdate.getDate() + "-"
-            + (currentdate.getMonth()+1)  + "-" 
-            + currentdate.getFullYear() + " "  
-            + currentdate.getHours() + ":"  
-            + currentdate.getMinutes() + ":" 
-            + currentdate.getSeconds();
+function formatar(data){
+    var currentdate = new Date(data); 
+    var datetime = currentdate.getDate() + "/"
+            + (currentdate.getMonth()+1)  + "/" 
+            + currentdate.getFullYear();  
+           
     return datetime;
 }
 
@@ -114,13 +112,13 @@ function addItensNaTela(despesas){
 		var html = `
 			<div class='col-lg-4 mb-4'>
 			   <div class='card h-100'>
-			      <h4 class='card-header'>`+despesa.descricao+ ` <a class="data">( `+despesa.data+ ` )</a>
+			      <h4 class='card-header'>`+despesa.descricao+ ` <a class="data">(`+formatar(despesa.data)+` <a class="data_atual"></a>)</a>   
 			      	<span class='categoria ` + despesa.categoria.toLowerCase() + `'></span>
 			      </h4>
 			      <div class='card-body'>
-			         <p class='card-text'>`+despesa.observacoes + "--" + GetNow() + `</p>
+			         <p class='card-text'>`+despesa.observacoes + `</p>
 			      </div>
-			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$ ` +despesa.valor+ `</a></div>
+			      <div class='card-footer'> <a href='#' class='btn btn-primary'>R$` +despesa.valor+ `</a></div>
 			   </div>
 			</div>
 		`;

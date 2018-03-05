@@ -38,4 +38,5 @@ a.btn.btn-primary {
 	background-position-x: -0px;
 	background-position-y: -173px;
 }
- a.data{font-size: 13px;}
+ a.data{font-size: 16px; background-color:#ccc;  }
+ a.data_atual{font-size: 13px; }
