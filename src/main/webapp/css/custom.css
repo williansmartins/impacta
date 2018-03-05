@@ -2,6 +2,14 @@
   margin-bottom: 30px;
 }
 
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+a.btn.btn-primary {
+    margin-right: 11px;
+}
+
 .categoria{
 	background-image: url(../image/sprite-categoria.png);
     width: 46px;
