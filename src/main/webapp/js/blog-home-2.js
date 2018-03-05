@@ -39,6 +39,7 @@ function addItensNaTela(lista){
 	            <div class="col-lg-6">
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
+	              <p class="card-text">` + entidade.data + `</p>
 	              <a href="#" class="btn btn-primary">Read More &rarr;</a>
 	            </div>
 	          </div>
