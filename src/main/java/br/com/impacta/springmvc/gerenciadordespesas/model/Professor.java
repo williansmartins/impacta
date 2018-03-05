@@ -1,5 +1,6 @@
 package br.com.impacta.springmvc.gerenciadordespesas.model;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -32,6 +33,18 @@ public class Professor {
 	@DecimalMin(value="675.05", message="O valor não pode ser menor que 0,5")
 	@NumberFormat(pattern="#,##0.00")
 	private double salario;
+	
+	private byte[] imagem;
+
+	
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
 
 
 	public Long getCodigo() {
@@ -82,6 +95,53 @@ public class Professor {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
+	
+	
+
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Professor other = (Professor) obj;
+		if (cargo == null) {
+			if (other.cargo != null)
+				return false;
+		} else if (!cargo.equals(other.cargo))
+			return false;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (dataInicio == null) {
+			if (other.dataInicio != null)
+				return false;
+		} else if (!dataInicio.equals(other.dataInicio))
+			return false;
+		if (!Arrays.equals(imagem, other.imagem))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (Double.doubleToLongBits(salario) != Double.doubleToLongBits(other.salario))
+			return false;
+		return true;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Professor [codigo=" + codigo + ", nome=" + nome + ", cargo=" + cargo + ", dataInicio=" + dataInicio
+				+ ", salario=" + salario + ", imagem=" + Arrays.toString(imagem) + "]";
+	}
+
 	
 
 }
