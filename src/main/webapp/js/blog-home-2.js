@@ -61,8 +61,8 @@ function addItensNaTela(lista){
 	          </div>
 	        </div>
 	        <div class="card-footer text-muted">
-	         `+formatar(entidade.data) +` by
-	          <a href="#">Start Bootstrap</a>
+	         `+formatar(entidade.data) +` de
+	          <a href="#">`+ entidade.autor +`</a>
 	        </div>
 	      </div>
 		`;
