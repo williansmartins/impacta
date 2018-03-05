@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.impacta.springmvc.gerenciadordespesas.model.JsonResponse;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Post;
-import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Status;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.PostDAO;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessorDAO;
 
 @Controller
-@RequestMapping("/post/controller")
+@RequestMapping("/post/rest")
 public class PostController {
 	
 	@Autowired
