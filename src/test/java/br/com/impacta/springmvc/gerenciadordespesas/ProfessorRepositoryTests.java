@@ -9,26 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.impacta.springmvc.gerenciadordespesas.model.Alunos;
-import br.com.impacta.springmvc.gerenciadordespesas.model.Professores;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.AlunosDAO;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessoresDAO;
+import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
+import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessorDAO;
 import junit.framework.Assert;
 
 
 //Classe que testa os metodos do dao
 @RunWith(SpringRunner.class)
 @SpringBootTest//classe teste, não precisa de servidor
-public class ProfessoresRepositoryTests {
+public class ProfessorRepositoryTests {
 	
 	
 	@Autowired
-	ProfessoresDAO dao;
+	ProfessorDAO dao;
 
 	@Test
 	public void buscarTodos() {
 		
-		List<Professores> lista = dao.findAll();
+		List<Professor> lista = dao.findAll();
 		System.out.println(lista);
 		Assert.assertNotNull(lista);
 	}
@@ -37,13 +35,13 @@ public class ProfessoresRepositoryTests {
 	@Test
 	public void atualizarProfessor() {
 		
-		Professores pro = new Professores();
+		Professor pro = new Professor();
 		pro.setCargo("portugues");
-		pro.setData(new Date());
+		pro.setDataInicio(new Date());
 		pro.setSalario(8988.5);
 		dao.save(pro);
 		
-		Professores resultado =dao.findOne(pro.getCodigo());
+		Professor resultado =dao.findOne(pro.getCodigo());
 		Assert.assertNotNull(resultado);
 	
 		dao.save(pro);
@@ -51,17 +49,17 @@ public class ProfessoresRepositoryTests {
 	
 	@Test
 	public void excluirProfessor() {
-		Professores pro = new Professores();
+		Professor pro = new Professor();
 		pro.setCargo("matematica");
-		pro.setData(new Date());
+		pro.setDataInicio(new Date());
 		pro.setSalario(888.5);
 		
 		dao.save(pro);
 		
-		Professores resultado =dao.findOne(pro.getCodigo());
+		Professor resultado =dao.findOne(pro.getCodigo());
 		Assert.assertNotNull(resultado);
 		
-		List<Professores> lista =dao.findAll();
+		List<Professor> lista =dao.findAll();
 		Assert.assertNotNull(lista);
 	
 	
@@ -73,9 +71,9 @@ public class ProfessoresRepositoryTests {
 	@Test
 	public void cadastrarProfessor() {
 		
-		Professores pro = new Professores();
+		Professor pro = new Professor();
 		pro.setCargo("matematica");
-		pro.setData(new Date());
+		pro.setDataInicio(new Date());
 		pro.setSalario(888.5);
 
 
@@ -89,9 +87,9 @@ public class ProfessoresRepositoryTests {
 	@Test
 	public void buscaProfessor() {
 		
-		Professores profLocal = new Professores();
+		Professor profLocal = new Professor();
 		profLocal.setCargo("ingles");
-		profLocal.setData(new Date());
+		profLocal.setDataInicio(new Date());
 		profLocal.setSalario(8588.5);
 		
 		Assert.assertNotNull(profLocal);//cadastro professor e, verifico se os dados estão vazios
@@ -99,7 +97,7 @@ public class ProfessoresRepositoryTests {
 	
 		
 	
-		Professores resultado =dao.findOne(profLocal.getCodigo());
+		Professor resultado =dao.findOne(profLocal.getCodigo());
 		Assert.assertNotNull(resultado);
 		
 		
@@ -111,7 +109,7 @@ public class ProfessoresRepositoryTests {
 	@Test
 	public void buscaProfessorComErro() {
 		//passa um parametro errado, e espero que ele retorne vazio null
-		Professores resultado =dao.findOne(999999999999l);
+		Professor resultado =dao.findOne(999999999999l);
 		Assert.assertNull(resultado);
 
 	}

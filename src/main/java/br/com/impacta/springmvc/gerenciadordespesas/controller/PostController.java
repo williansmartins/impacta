@@ -15,7 +15,7 @@ import br.com.impacta.springmvc.gerenciadordespesas.model.Post;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Status;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.PostDAO;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessoresDAO;
+import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessorDAO;
 
 @Controller
 @RequestMapping("/post/controller")
