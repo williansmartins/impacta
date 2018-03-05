@@ -55,7 +55,7 @@ function addItensNaTela(lista){
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
 	              <p class="card-text">` + entidade.data + `</p>
-	              <a class="deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`">Apagar post</a>
+	              <a class="btn btn-danger deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`">Apagar post</a>
 	             
 	            </div>
 	          </div>
