@@ -30,6 +30,7 @@ public class Post {
 	@NotNull(message = "A data é obrigatória")
 	private Date data;
 	
+	private String autor;
 	
 	public Integer getCod() {
 		return cod;
@@ -80,6 +81,14 @@ public class Post {
 		this.data = data;
 	}
 
+	public String getAutor() {
+		return autor;
+	}
+
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
 
 	public Post() {
 		super();
@@ -91,6 +100,9 @@ public class Post {
 		return "Post [cod=" + cod + ", imagem=" + imagem + ", titulo=" + titulo + ", descricao=" + descricao + ", data="
 				+ data + "]";
 	}
+
+
+	
 
 	
 	
