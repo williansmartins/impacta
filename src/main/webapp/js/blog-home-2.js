@@ -4,9 +4,12 @@ $(document).ready(function(){
 
 function formatar(data){
     var currentdate = new Date(data); 
-    var datetime = currentdate.getDate() + "/"
-            + (currentdate.getMonth()+1)  + "/" 
+    var locale = "pt-br";
+    var month = currentdate.toLocaleString(locale, { month: "long" });
+    var datetime = currentdate.getDate() + " de "
+            + month  + " de " 
             + currentdate.getFullYear();  
+   
            
     return datetime;
 }
@@ -44,7 +47,7 @@ function addItensNaTela(lista){
 	          </div>
 	        </div>
 	        <div class="card-footer text-muted">
-	          Posted on January 1, 2017 by
+	         `+formatar(entidade.data) +` by
 	          <a href="#">Start Bootstrap</a>
 	        </div>
 	      </div>
