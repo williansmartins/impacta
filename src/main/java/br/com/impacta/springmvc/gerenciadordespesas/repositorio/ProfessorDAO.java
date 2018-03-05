@@ -7,7 +7,7 @@ import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
 
 
 //ver os metodos do Jpa ,CRTL e clica no Jpa
-public interface ProfessoresDAO extends JpaRepository<Professor, Long> {
+public interface ProfessorDAO extends JpaRepository<Professor, Long> {
 	
 	
 

@@ -52,17 +52,22 @@ public class CarrosRepositoryTests {
 		Carros carroBanco = dao.findOne(carroLocal.getCodigo());
 		carroBanco.setNome("Porshe");
 		carroLocal.setNome("Ferrari");
+		
+		Carros carroBanco1 = dao.findOne(carroLocal.getCodigo());
+		carroBanco1.setNome("Porshe");
 		carroLocal.setAno(2015);
 		carroLocal.setValor(3.000);
 		carroLocal.setCor("Rosa");
 		dao.save(carroLocal);
 		
-		Carros carroBanco1 = dao.findOne(carroLocal.getCodigo());
-		carroBanco1.setNome("joão");
-		dao.save(carroBanco1);
+		Carros carroBanco11 = dao.findOne(carroLocal.getCodigo());
+		carroBanco11.setNome("joão");
+		dao.save(carroBanco11);
 		
-		Assert.assertEquals(carroLocal.getCodigo(), carroBanco1.getCodigo());
-		Assert.assertNotEquals(carroLocal.getNome(), carroBanco1.getNome());
+		Assert.assertEquals(carroLocal.getCodigo(), carroBanco11.getCodigo());
+		Assert.assertNotEquals(carroLocal.getNome(), carroBanco11.getNome());
+		Assert.assertEquals(carroLocal.getCodigo(), carroBanco11.getCodigo());
+		Assert.assertNotEquals(carroLocal.getNome(), carroBanco11.getNome());
 		
 		
 	}
@@ -78,6 +83,10 @@ public class CarrosRepositoryTests {
 		carroLocal1.setNome("manuel");
 		carroLocal1.setAno(2015);
 		carroLocal1.setValor(3.000);
+		carroLocal1.setNome("manuel");
+		carroLocal1.setAno(2015);
+		carroLocal1.setValor(3.000);
+
 		dao.save(carroLocal1);
 		Carros carroBanco1 = dao.findOne(carroLocal1.getCodigo());
 		Assert.assertNotNull(carroBanco1);

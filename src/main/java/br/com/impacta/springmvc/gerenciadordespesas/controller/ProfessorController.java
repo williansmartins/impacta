@@ -16,7 +16,7 @@ import br.com.impacta.springmvc.gerenciadordespesas.model.JsonResponse;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Status;
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.Despesas;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessoresDAO;
+import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessorDAO;
 
 
 //testar metodos do dao
@@ -27,7 +27,7 @@ public class ProfessorController {
 	
 
 	@Autowired
-	ProfessoresDAO dao;
+	ProfessorDAO dao;
 	
 	//,consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
 	//criar (POST)
