@@ -6,8 +6,8 @@ function formatar(data){
     var currentdate = new Date(data); 
     var datetime = currentdate.getDate() + "/"
             + (currentdate.getMonth()+1)  + "/" 
-            + currentdate.getFullYear();  
-           
+            + currentdate.getFullYear()
+            ;            
     return datetime;
 }
 
@@ -44,8 +44,9 @@ function addItensNaTela(lista){
 	          </div>
 	        </div>
 	        <div class="card-footer text-muted">
-	          Posted on January 1, 2017 by
-	          <a href="#">Start Bootstrap</a>
+	        <a href="#"> Postado em Março </a>
+	          <a class="data">(`+formatar(entidade.data)+` <a class="data_atual"></a>)
+	          
 	        </div>
 	      </div>
 		`;
