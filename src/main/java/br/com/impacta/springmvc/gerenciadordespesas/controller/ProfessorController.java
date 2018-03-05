@@ -1,7 +1,10 @@
 package br.com.impacta.springmvc.gerenciadordespesas.controller;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -9,13 +12,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import br.com.impacta.springmvc.gerenciadordespesas.model.Despesa;
+
 import br.com.impacta.springmvc.gerenciadordespesas.model.JsonResponse;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Professor;
 import br.com.impacta.springmvc.gerenciadordespesas.model.Status;
-import br.com.impacta.springmvc.gerenciadordespesas.repositorio.Despesas;
+
 import br.com.impacta.springmvc.gerenciadordespesas.repositorio.ProfessorDAO;
 
 
@@ -28,14 +33,17 @@ public class ProfessorController {
 
 	@Autowired
 	ProfessorDAO dao;
+	//@Autowired
+	//Professor pro;
 	
-	//,consumes = MediaType.APPLICATION_JSON_UTF8_VALUE
+	
 	//criar (POST)
 	@RequestMapping(value="/criar", method=RequestMethod.POST) 
 	@ResponseBody
 	public JsonResponse criar(@RequestBody Professor pro){
 		JsonResponse resposta = new JsonResponse();
 		
+	
 		try {
 			dao.save(pro);
 			resposta.setStatus(Status.SUCESSO);
@@ -91,9 +99,13 @@ public class ProfessorController {
 	@ResponseBody
 	public JsonResponse buscarTodos(){
 		JsonResponse resposta = new JsonResponse();
+		
 		try {
 			List<Professor> lista = dao.findAll();
+			//Query pro4=dao.imagemProfessores(pro.getCodigo());
+		
 			resposta.setObjeto(lista);
+			//resposta.setObjeto(pro4);
 			resposta.setStatus(Status.SUCESSO);
 			resposta.setMensagem("Sucesso ao buscar!");
 			
@@ -104,6 +116,8 @@ public class ProfessorController {
 		return resposta; 
 	}
 	
+	
+
 	
 
 }
