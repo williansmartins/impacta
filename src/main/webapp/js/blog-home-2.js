@@ -15,8 +15,8 @@ function buscarPosts() {
 	$.ajax({
 		url:'/post/rest/buscarTodos',
 		complete: function (response) {
-			var entidade = response.responseJSON.objeto;
-			addItensNaTela(entidade);
+			var lista = response.responseJSON.objeto;
+			addItensNaTela(lista);
 		},
 		error: function () {
 			alert('Ixi: there was an error!');
@@ -24,9 +24,9 @@ function buscarPosts() {
 	});
 }
 
-function addItensNaTela(entidade){
-	for(var i = 0; i<entidade.length; i++){
-		var despesa = entidade[i];
+function addItensNaTela(lista){
+	for(var i = 0; i<lista.length; i++){
+		var entidade = lista[i];
 		var html = `
 	      <div class="card mb-4">
 	        <div class="card-body">
