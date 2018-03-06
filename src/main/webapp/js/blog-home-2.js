@@ -25,15 +25,16 @@ function clicks() {
 }
 
 function formatar(data){
-    var currentdate = new Date(data); 
-    var locale = "pt-br";
-    var month = currentdate.toLocaleString(locale, { month: "long" });
-    var datetime = currentdate.getDate() + " de "
-            + month  + " de " 
-            + currentdate.getFullYear();  
+    // var currentdate = new Date(data); 
+    // var locale = "pt-br";
+    // var month = currentdate.toLocaleString(locale, { month: "long" });
+    // var datetime = currentdate.getDate() + " de "
+    //         + month  + " de " 
+    //         + currentdate.getFullYear();  
    
            
-    return datetime;
+    // return datetime;
+    return data;
 }
 
 function buscarPosts() {
