@@ -51,6 +51,8 @@ function buscarPosts() {
 }
 
 function addItensNaTela(lista){
+
+
 	for(var i = 0; i<lista.length; i++){
 		var entidade = lista[i];
 		var html = `
@@ -65,7 +67,7 @@ function addItensNaTela(lista){
 	            <div class="col-lg-6">
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
-	              <p class="card-text">` + entidade.data + `</p>
+	              <p class="card-text">` +  entidade.data +`</p>
 	              <a class="btn btn-danger deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`" data-titulo="`+ entidade.titulo +`">Apagar post</a>
 	             
 	            </div>
@@ -104,7 +106,7 @@ function salvar() {
 	var descricao = $("#descricao").val();
 	var autor = $("#autor").val();
 	var imagem = $("#imagem").val();
-	$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
+	//$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	var data = $("#datepicker").val();
 
 
