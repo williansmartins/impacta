@@ -5,6 +5,9 @@ $(document).ready(function(){
 function clicks() {
 	$(".deletaPost").click(
 		function(){
+			 id = $(this).data("id");
+			$("#modal-exclusao").modal();
+			//deletaPost(id);
 			id = $(this).data("id");
 			var titulo = $(this).data("titulo");
 
