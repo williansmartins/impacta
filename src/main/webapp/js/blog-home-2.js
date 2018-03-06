@@ -1,15 +1,18 @@
 $(document).ready(function(){
 	buscarPosts();
-
-
 });
 
 function clicks() {
 	$(".deletaPost").click(
 		function(){
-			var id = $(this).data("id");
+			 id = $(this).data("id");
 			$("#modal-exclusao").modal();
 			//deletaPost(id);
+			id = $(this).data("id");
+			var titulo = $(this).data("titulo");
+
+			$("#modal-exclusao").modal();
+			$("#post-titulo").html(titulo);
 		}
 	);
 }
@@ -56,7 +59,7 @@ function addItensNaTela(lista){
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
 	              <p class="card-text">` + entidade.data + `</p>
-	              <a class="btn btn-danger deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`">Apagar post</a>
+	              <a class="btn btn-danger deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`" data-titulo="`+ entidade.titulo +`">Apagar post</a>
 	             
 	            </div>
 	          </div>
@@ -74,7 +77,7 @@ function addItensNaTela(lista){
 
 }
 
-function deletaPost(id) {
+function deletarPost() {
 	$.ajax({
 		url:'/post/rest/deletar/' + id,
 		type: 'DELETE',
