@@ -89,3 +89,42 @@ function deletarPost() {
 	 
 	});
 }
+
+function salvar() {
+	var titulo = $("#titulo").val();
+	var descricao = $("#descricao").val();
+	var autor = $("#autor").val();
+	var imagem = $("#imagem").val();
+	var data = $("#data").val();
+
+
+	$.ajax({
+		url:'/post/rest/criar/',
+		type: 'POST',
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		data: JSON.stringify({
+		    "imagem": "http://www.aemind.es/wp-content/uploads/2017/09/MFY-700X300.jpg",
+		    "titulo": "titulo genérico 2",
+		    "descricao": "descrição genérica 2",
+		    "data": "2018-12-30",
+		    "autor" : "willians"
+		}),
+		complete: function (response) {
+			//console.log(response.responseJSON.mensagem);
+			//location.reload();
+		},
+		error: function () {
+			alert('Não foi possivel criar o post!!');
+		},
+	 
+	});
+}
+
+function popularForm() {
+	$("#titulo").val("#titulo");
+	$("#descricao").val("#descricao");
+	$("#autor").val("#autor");
+	$("#imagem").val("#imagem");
+	$("#data").val("#data");
+}
