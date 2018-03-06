@@ -106,7 +106,6 @@ function salvar() {
 	var descricao = $("#descricao").val();
 	var autor = $("#autor").val();
 	var imagem = $("#imagem").val();
-	//$( "#datepicker" ).datepicker( "option", "dateFormat", "yy-mm-dd" );
 	var data = $("#datepicker").val();
 
 
