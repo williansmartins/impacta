@@ -1,7 +1,5 @@
 $(document).ready(function(){
 	buscarPosts();
-
-
 });
 
 function clicks() {
