@@ -8,7 +8,8 @@ function clicks() {
 	$(".deletaPost").click(
 		function(){
 			var id = $(this).data("id");
-			deletaPost(id);
+			$("#modal-exclusao").modal();
+			//deletaPost(id);
 		}
 	);
 }
