@@ -111,8 +111,8 @@ function salvar() {
 		    "autor" : "willians"
 		}),
 		complete: function (response) {
-			//console.log(response.responseJSON.mensagem);
-			//location.reload();
+			console.log(response.responseJSON.mensagem);
+			location.reload();
 		},
 		error: function () {
 			alert('Não foi possivel criar o post!!');
