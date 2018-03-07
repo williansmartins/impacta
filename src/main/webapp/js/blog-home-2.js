@@ -114,7 +114,7 @@ function addItensNaTela(lista){
 
 function deletarPost() {
 	$.ajax({
-		url:'/post/rest/deletar/' + id,
+		url:'/post/rest/deletar/' + cod,
 		type: 'DELETE',
 		complete: function (response) {
 			console.log(response.responseJSON.mensagem);
