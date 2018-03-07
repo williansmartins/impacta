@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Post {
 	
@@ -25,9 +27,7 @@ public class Post {
 	
 	private String descricao;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd/MM/yyyy")
-	@NotNull(message = "A data é obrigatória")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy", timezone="America/Sao_Paulo")
 	private Date data;
 	
 	private String autor;

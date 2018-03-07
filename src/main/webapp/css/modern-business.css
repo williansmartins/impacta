@@ -18,7 +18,11 @@ table{
     padding-top: 56px;
   }
 }
-
+#btn-inserir{
+	
+	margin-left:91%;
+	margin-bottom: 2%;
+}
 .carousel-item {
   height: 65vh;
   min-height: 300px;

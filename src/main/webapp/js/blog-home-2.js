@@ -1,34 +1,58 @@
 $(document).ready(function(){
 	buscarPosts();
-
-
+	preparardatepicker();
 });
 
+function preparardatepicker(){
+	$( function() {
+	    $( "#datepicker" ).datepicker();
+	    $( "#datepicker" ).on( "change", function() {
+	    	$( "#datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+	    });
+	  } );
+}
 function clicks() {
 	$(".deletaPost").click(
 		function(){
-			var id = $(this).data("id");
-			deletaPost(id);
+			var entidade = $(this).parent().parent().parent().parent();
+
+			cod = $(entidade).data("cod");
+			titulo = $(entidade).data("titulo");
+
+			$("#modal-excluir").modal();
+			$("#post-titulo").html(titulo);
+		}
+	);
+
+	$(".abrirModalPost").click(
+		function(){
+			var entidade = $(this).parent().parent().parent().parent();
+
+			cod = $(entidade).data("cod");
+			titulo = $(entidade).data("titulo");
+			descricao = $(entidade).data("descricao");
+			autor = $(entidade).data("autor");
+			imagem = $(entidade).data("imagem");
+			data = $(entidade).data("data");
+
+			popularForm(titulo, descricao, autor, imagem, data);
+
+			$("#modal-inc-alt").modal();
 		}
 	);
 }
 
 function formatar(data){
-    var currentdate = new Date(data); 
-    var locale = "pt-br";
-    var month = currentdate.toLocaleString(locale, { month: "long" });
-    var datetime = currentdate.getDate() + " de "
-            + month  + " de " 
-<<<<<<< .mine
-            + currentdate.getFullYear()
-            ;            
-
-=======
-            + currentdate.getFullYear();  
+    // var currentdate = new Date(data); 
+    // var locale = "pt-br";
+    // var month = currentdate.toLocaleString(locale, { month: "long" });
+    // var datetime = currentdate.getDate() + " de "
+    //         + month  + " de " 
+    //         + currentdate.getFullYear();  
    
            
->>>>>>> .theirs
-    return datetime;
+    // return datetime;
+    return data;
 }
 
 function buscarPosts() {
@@ -46,10 +70,18 @@ function buscarPosts() {
 }
 
 function addItensNaTela(lista){
+
+
 	for(var i = 0; i<lista.length; i++){
 		var entidade = lista[i];
 		var html = `
-	      <div class="card mb-4">
+	      <div class="card mb-4"
+	      	data-cod="`+ entidade.cod +`"
+  			data-titulo="`+ entidade.titulo +`"
+  			data-descricao="`+ entidade.descricao +`"
+  			data-imagem="`+ entidade.imagem +`"
+  			data-data="`+ entidade.data +`"
+  			data-autor="`+ entidade.autor +`">
 	        <div class="card-body">
 	          <div class="row">
 	            <div class="col-lg-6">
@@ -60,9 +92,9 @@ function addItensNaTela(lista){
 	            <div class="col-lg-6">
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
-	              <p class="card-text">` + entidade.data + `</p>
-	              <a class="btn btn-danger deletaPost" href="javascript:void(0)" data-id="`+ entidade.cod +`">Apagar post</a>
-	             
+	              <p class="card-text">` +  entidade.data +`</p>
+	              <a class="btn btn-danger deletaPost" >Apagar post</a>
+	              <a class="btn btn-success abrirModalPost" href="javascript:void(0)" >Atualizar post</a>
 	            </div>
 	          </div>
 	        </div>
@@ -76,10 +108,9 @@ function addItensNaTela(lista){
 		$('#post-wrapper').append(html);
 		
 	}
-
 }
 
-function deletaPost(id) {
+function deletarPost() {
 	$.ajax({
 		url:'/post/rest/deletar/' + id,
 		type: 'DELETE',
@@ -92,4 +123,53 @@ function deletaPost(id) {
 		},
 	 
 	});
+}
+
+function salvar() {
+	var titulo = $("#titulo").val();
+	var descricao = $("#descricao").val();
+	var autor = $("#autor").val();
+	var imagem = $("#imagem").val();
+	var data = $("#datepicker").val();
+
+	//atualizando
+	var urlPreparada = '/post/rest/atualizar/';
+	var typePreparado = 'PUT';
+	
+	if(isNaN(cod)){
+		//criando
+		urlPreparada = '/post/rest/criar/';
+		typePreparado = 'POST';
+	}
+
+	$.ajax({
+		url: urlPreparada,
+		type: typePreparado,
+		contentType: "application/json; charset=utf-8",
+		dataType: "json",
+		data: JSON.stringify({
+		    "cod": cod ,
+		    "imagem": imagem ,
+		    "titulo":  titulo ,
+		    "descricao": descricao,
+		    "data": data ,
+		    "autor" : autor
+		}),
+		complete: function (response) {
+			console.log(response.responseJSON.mensagem);
+			location.reload();
+		},
+		error: function () {
+			alert('Não foi possivel criar/atualizar o post!!');
+		},
+	 
+	});
+}
+
+function popularForm(titulo, descricao, autor, imagem, data) {
+	$("#titulo").val(titulo);
+	$("#descricao").val(descricao);
+	$("#autor").val(autor);
+	$("#imagem").val(imagem);
+	$("#datepicker").val(data);
 }
