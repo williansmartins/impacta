@@ -2,6 +2,7 @@ $(document).ready(function(){
 
 	buscarDespesas();
 	buscarProfessores();
+	listarProfessores();
 
 	$( "#buscar" ).click(function() {
 	  	alert(123);
@@ -45,6 +46,59 @@ function buscarProfessores() {
 	});
 }
     
+
+
+function listarProfessores() {
+	$.ajax({
+		url:'/professor/buscarTodos',
+		complete: function (response) {
+			var professores = response.responseJSON;
+			listaProfessores(professores);
+		},
+		error: function () {
+			$('#output').html('Ixi: there was an error!');
+		},
+	});
+}
+
+
+
+
+$(function() {
+
+	$("#cad_professor").click(
+			  function (){
+					abrirLoading();
+					$.ajax({
+						enctype: 'multipart/form-data',
+						type : 'POST',
+						url:'/professor/criar',
+						data : {
+							nome : $("#nome").val(),
+							salario : $("#salario").val(),
+							data : $("#data").val(),
+
+							cargo : $("#cargo").val(),
+							cargo : $("#file").val(),
+							
+						},
+					
+						success : function(r) {
+							fecharLoading();
+							 window.location.href = "ListaProfessores.html";
+						},
+						error : function() {
+							commit(false);
+							alert('deu erro');
+						  },
+				    });
+					
+					
+				});
+});
+
+
+
 function addItensNaTabela(despesas){
 	for(var i = 0; i<despesas.length; i++){
 		var despesa = despesas[i];
@@ -80,11 +134,30 @@ function addProfessoresNaTela(professores){
 		var pro = professores.objeto[i];
 		$('#prof').append("<div class='col-lg-4 col-sm-6 portfolio-item'> <div class='card h-100'><a href='#'><img class='card-img-top' src='http://placehold.it/700x400' alt=''></a> <div class='card-body'><h4 class='card-title'><a href='#'>"+pro.nome+"</a></h4>  <p class='card-text'>"+pro.cargo+"</p></div></div> </div>");
 	}
+	
 }
+	function listaProfessores(professores){
+		for(var i = 0; i<professores.objeto.length; i++){
+			var pro = professores.objeto[i];
+			var total_salario=pro.salario;
+			$('#tabela').append("<tr><td>"+pro.codigo+"</td><td>"+"<tr><td>"+pro.imagem+"</td><td>"+pro.nome+"</td><td>"+pro.cargo+"</td><td>"+pro.dataInicio+"</td><td>"+pro.salario+"</td><td><a href='#' class='btn btn-success'>editar</a>&nbsp;<a href='#' class='btn btn-danger'>excluir</a></td></tr>");
+			
+
+		}
+		$('#total_professores').append(professores.objeto.length);
+		$('#total_salario').append(total_salario);
+	}
 
 
 
 
+	function abrirLoading() {
+		$(".loading").show();
+		$("body").css("background-color","#9494b8");
+	}
 
+	function fecharLoading() {
+		$(".loading").hide();
+	}
 
 

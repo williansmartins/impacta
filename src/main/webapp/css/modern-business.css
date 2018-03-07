@@ -8,6 +8,11 @@ body {
   padding-top: 54px;
 }
 
+table{
+	
+	width:100%;
+}
+
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
