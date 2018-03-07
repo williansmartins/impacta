@@ -14,6 +14,14 @@ function preparardatepicker(){
 	  } );
 }
 function clicks() {
+	$("#btn-inserir").click(
+		function(){
+			popularForm("", "", "", "", "");
+
+			$("#modal-inc-alt").modal();
+		}
+	);	
+
 	$(".deletaPost").click(
 		function(){
 			var entidade = $(this).parent().parent().parent().parent();
@@ -96,7 +104,7 @@ function addItensNaTela(lista){
 	              <p class="card-text">` + entidade.descricao + `</p>
 	              <p class="card-text">` +  entidade.data +`</p>
 	              <a class="btn btn-danger deletaPost" >Apagar post</a>
-	              <a class="btn btn-success abrirModalPost" href="javascript:void(0)" >Atualizar post</a>
+	              <a class="btn btn-success abrirModalPost" href="javascript:void(0)" >Editar post</a>
 	            </div>
 	          </div>
 	        </div>
