@@ -102,7 +102,6 @@ function addItensNaTela(lista){
 	            <div class="col-lg-6">
 	              <h2 class="card-title">` + entidade.titulo + `</h2>
 	              <p class="card-text">` + entidade.descricao + `</p>
-	              <p class="card-text">` +  entidade.data +`</p>
 	              <a class="btn btn-danger deletaPost" >Apagar post</a>
 	              <a class="btn btn-success abrirModalPost" href="javascript:void(0)" >Editar post</a>
 	            </div>
