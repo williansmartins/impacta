@@ -1,3 +1,5 @@
+var cod = null;
+
 $(document).ready(function(){
 	buscarPosts();
 	preparardatepicker();
