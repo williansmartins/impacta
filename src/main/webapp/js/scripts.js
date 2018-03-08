@@ -67,34 +67,44 @@ function listarProfessores() {
 $(function() {
 
 	$("#cad_professor").click(
-			  function (){
-					abrirLoading();
-					$.ajax({
-						enctype: 'multipart/form-data',
-						type : 'POST',
-						url:'/professor/criar',
-						data : {
-							nome : $("#nome").val(),
-							salario : $("#salario").val(),
-							data : $("#data").val(),
-
-							cargo : $("#cargo").val(),
-							cargo : $("#file").val(),
-							
-						},
-					
-						success : function(r) {
-							fecharLoading();
-							 window.location.href = "ListaProfessores.html";
-						},
-						error : function() {
-							commit(false);
-							alert('deu erro');
-						  },
-				    });
-					
-					
-				});
+			
+		  function (){
+				abrirLoading();
+				
+				// Get form
+		        var form = $('#fileUploadForm')[0];
+//	
+//				// Create an FormData object
+		        var data = new FormData(form);
+//	
+//				// If you want to add an extra field for the FormData
+		        data.append("nome", $("#nome").val());
+		        data.append("salario", $("#salario").val());
+		        data.append("data", $("#data").val());
+		        data.append("cargo", $("#cargo").val());
+				
+				$.ajax({
+					enctype: 'multipart/form-data',
+					type : 'POST',
+					url:'/professor/criar',
+					processData: false,  // Important!
+			        contentType: false,
+			        cache: false,
+					data : data,
+				
+					success : function(r) {
+						fecharLoading();
+						 window.location.href = "ListaProfessores.html";
+					},
+					error : function() {
+						fecharLoading();
+						//commit(false);
+						alert('deu erro');
+					  },
+			    });
+				
+				
+			});
 });
 
 
@@ -140,7 +150,7 @@ function addProfessoresNaTela(professores){
 		for(var i = 0; i<professores.objeto.length; i++){
 			var pro = professores.objeto[i];
 			var total_salario=pro.salario;
-			$('#tabela').append("<tr><td>"+pro.codigo+"</td><td>"+"<tr><td>"+pro.imagem+"</td><td>"+pro.nome+"</td><td>"+pro.cargo+"</td><td>"+pro.dataInicio+"</td><td>"+pro.salario+"</td><td><a href='#' class='btn btn-success'>editar</a>&nbsp;<a href='#' class='btn btn-danger'>excluir</a></td></tr>");
+			$('#tabela').append("<tr><td>"+pro.codigo+"</td>"+"<td><img src='image/"+pro.imagem+"'></td><td>"+pro.nome+"</td><td>"+pro.cargo+"</td><td>"+pro.dataInicio+"</td><td>"+pro.salario+"</td><td><a href='#' class='btn btn-success'>editar</a>&nbsp;<a href='#' class='btn btn-danger'>excluir</a></td></tr>");
 			
 
 		}

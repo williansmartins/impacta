@@ -31,4 +31,8 @@ table{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
+}
+.loading{
+	
+	display:none;
+}

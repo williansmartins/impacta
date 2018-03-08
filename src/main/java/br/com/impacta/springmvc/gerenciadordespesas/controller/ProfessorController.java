@@ -1,6 +1,9 @@
 package br.com.impacta.springmvc.gerenciadordespesas.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 import java.util.List;
 
@@ -38,12 +41,40 @@ public class ProfessorController {
 	
 	
 	//criar (POST)
+	
+	//metodo cadastrar com parametros e file
+	
+	
+	  private static String UPLOADED_FOLDER = "H://impacta-back-end//src//main//webapp//image//";
+	  
 	@RequestMapping(value="/criar", method=RequestMethod.POST) 
 	@ResponseBody
-	public JsonResponse criar(@RequestBody Professor pro){
+	public JsonResponse criar(@RequestParam("file") MultipartFile file,@RequestParam("nome") String nome,
+			@RequestParam("cargo") String cargo,@RequestParam("data") Date data,@RequestParam("salario") double salario){
 		JsonResponse resposta = new JsonResponse();
 		
-	
+		Professor pro= new Professor();
+		pro.setCargo(cargo);
+		pro.setDataInicio(data);
+		pro.setNome(nome);
+		pro.setSalario(salario);
+		
+		   if (file.isEmpty()) {
+	          System.out.println("vazio");
+	        }
+		 
+			try {
+				byte[] bytes = file.getBytes();
+			      Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+				    Files.write(path, bytes);
+				  
+				pro.setImagem(file.getOriginalFilename());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			          
+
 		try {
 			dao.save(pro);
 			resposta.setStatus(Status.SUCESSO);
@@ -53,8 +84,13 @@ public class ProfessorController {
 			resposta.setStatus(Status.ERRO);
 			resposta.setMensagem("Ocorreu um erro ao salvar: " + e.getMessage());
 		}
-		return resposta ;
+		return resposta;
+	
+		   
 	}
+	
+	 
+
 	
 	//deletar (DELETE)
 	@RequestMapping(value="/deletar/{codigo}",method=RequestMethod.DELETE)

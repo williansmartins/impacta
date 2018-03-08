@@ -19,7 +19,7 @@ public interface ProfessorDAO extends JpaRepository<Professor, Long> {
 	Professor pro=null;
 	
 
-
+//query native  querys customizadas
 public default Query imagemProfessores(Long id) {
 		
 		Session session = null;

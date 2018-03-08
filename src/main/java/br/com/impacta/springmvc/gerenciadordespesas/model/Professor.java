@@ -34,15 +34,15 @@ public class Professor {
 	@NumberFormat(pattern="#,##0.00")
 	private double salario;
 	
-	private byte[] imagem;
+	private String imagem;
 
 	
-	public byte[] getImagem() {
+	public String getImagem() {
 		return imagem;
 	}
 
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 
@@ -123,8 +123,7 @@ public class Professor {
 				return false;
 		} else if (!dataInicio.equals(other.dataInicio))
 			return false;
-		if (!Arrays.equals(imagem, other.imagem))
-			return false;
+		
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -136,11 +135,6 @@ public class Professor {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Professor [codigo=" + codigo + ", nome=" + nome + ", cargo=" + cargo + ", dataInicio=" + dataInicio
-				+ ", salario=" + salario + ", imagem=" + Arrays.toString(imagem) + "]";
-	}
 
 	
 
