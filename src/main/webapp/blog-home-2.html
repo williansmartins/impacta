@@ -19,7 +19,7 @@
 	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   </head>
 
-  <body>
+  <body ng-app="myApp" ng-controller="postCtrl">
 
     <!-- Navigation -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -97,7 +97,26 @@
   Novo Post
 </button>
       <section id="post-wrapper">
-        
+        <div class="card mb-4" ng-repeat="entidade in lista">
+		    <div class="card-body">
+		      <div class="row">
+		        <div class="col-lg-6">
+		          <a href="#">
+		            <img class="img-fluid rounded" src="{{entidade.imagem}}">
+		          </a>
+		        </div>
+		        <div class="col-lg-6">
+		          <h2 class="card-title">{{entidade.titulo}}</h2>
+		          <p class="card-text">{{entidade.descricao}}</p>
+		          <a class="btn btn-danger" ng-click="deletar(entidade.cod)" >Apagar post</a>
+		          <a class="btn btn-success abrirModalPost" href="javascript:void(0)" >Editar post</a>
+		        </div>
+		      </div>
+		    </div>
+		    <div class="card-footer text-muted">
+		     {{1288323623006  | date:'MM/yyyy'}} por <a href="#">{{entidade.autor}}</a>
+		    </div>
+		  </div>
       </section>
  
 
@@ -192,6 +211,7 @@
   <script src="vendor/jquery/jquery.min.js"></script>
    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="js/blog-home-2.js"></script>
 
 </body>
